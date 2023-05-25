@@ -1,26 +1,54 @@
-<div class="district-tables">
-    <div class="district-table" *ngFor="let response of districtResponses | keyvalue">
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Ballot Order</th>
-            <th>Given Name</th>
-            <th>Surname</th>
-            <th>Party ID</th>
-            <th>District ID</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let candidate of response.value">
-            <td>{{ candidate.candidateBallotOrder }}</td>
-            <td>{{ candidate.candidateGivenName }}</td>
-            <td>{{ candidate.candidateSurname }}</td>
-            <td>{{ candidate.candidatePartyId }}</td>
-            <td>{{ candidate.candidateDistrictId }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
+<table>
+  <thead>
+    <tr>
+      <th>District</th>
+      <th>Candidates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let districtData of districtResponses; let i = index">
+      <tr>
+        <td>{{ districtData.district }}</td>
+        <td>
+          <div class="arrow" (click)="toggleCandidates(districtData.district)">
+            <div class="arrow-icon" [ngClass]="{'arrow-down': activeDistrict === districtData.district}"></div>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="activeDistrict === districtData.district">
+        <td [attr.colspan]="2">
+          <div class="scrollable-table-container">
+            <table class="scrollable-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Party ID</th>
+                  <th>Ballot Order</th>
+                  <!-- Add the remaining column headers here -->
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="i < 10; else scrollableRows">
+                  <tr *ngFor="let candidate of districtData.candidates">
+                    <td>{{ candidate.candidateGivenName }} {{ candidate.candidateSurname }}</td>
+                    <td>{{ candidate.candidatePartyId }}</td>
+                    <td>{{ candidate.candidateBallotOrder }}</td>
+                    <!-- Add the remaining columns here -->
+                  </tr>
+                </ng-container>
+                <ng-template #scrollableRows>
+                  <tr *ngFor="let candidate of districtData.candidates">
+                    <td>{{ candidate.candidateGivenName }} {{ candidate.candidateSurname }}</td>
+                    <td>{{ candidate.candidatePartyId }}</td>
+                    <td>{{ candidate.candidateBallotOrder }}</td>
+                    <!-- Add the remaining columns here -->
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

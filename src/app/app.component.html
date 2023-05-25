@@ -4,33 +4,16 @@
 <ng-container *ngIf="isCandidatesRouteActive(); else otherRoutes">
   <!-- Candidates for All Ridings Table -->
   <div class="table-container">
-    <h2>Districts</h2>
-    <div class="district-tables">
-      <div class="district-table" *ngFor="let response of sortedDistrictResponses()">
-        <h3>District {{ response.key }}</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Ballot Order</th>
-              <th>Given Name</th>
-              <th>Surname</th>
-              <th>Party ID</th>
-              <th>District ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let candidate of response.value">
-              <td>{{ candidate.candidateBallotOrder }}</td>
-              <td>{{ candidate.candidateGivenName }}</td>
-              <td>{{ candidate.candidateSurname }}</td>
-              <td>{{ candidate.candidatePartyId }}</td>
-              <td>{{ candidate.candidateDistrictId }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <h2>District Candidates</h2>
+    <div class="district-table" *ngFor="let districtData of districtResponses">
+      <h3>District {{ districtData.district }}</h3>
+      <select>
+        <option *ngFor="let candidate of districtData.candidates" value="{{ candidate.id }}">
+          {{ candidate.name }}
+        </option>
+      </select>
     </div>
-  </div>
+  </div>  
 </ng-container>
 
 <ng-template #otherRoutes>
@@ -54,6 +37,6 @@
 
   <!-- <hr> Add a horizontal line as a partition -->
 
-  <!-- <hr> Add a horizontal line as a partition --> -->
+  <!-- <hr> Add a horizontal line as a partition -->
 </ng-template>
 <router-outlet></router-outlet>
