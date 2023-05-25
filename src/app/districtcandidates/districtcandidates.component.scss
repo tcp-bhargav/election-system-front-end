@@ -1,19 +1,23 @@
 .table-container {
   max-height: 400px;
   overflow-y: auto;
+  width: 75%;
+  // padding: 20px;
 
   select {
     font-size: 20px; /* Adjust the font size as per your preference */
   }
-<<<<<<< HEAD
+
   
-  table {
-    width: 100%;
-    margin-bottom: 1rem;
-    background-color: #fff;
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+  // table {
+  //   width: 75%;
+  //   margin-bottom: 1rem;
+  //   background-color: #fff;
+  //   border-collapse: collapse;
+  //   border-spacing: 0;
+  //   padding: .75rem;
+   
+  // }
   
   thead {
     position: sticky;
@@ -25,6 +29,7 @@
   td {
     padding: 0.75rem;
     vertical-align: top;
+    text-align: center;
     border-top: 1px solid #dee2e6;
     text-align: left;
     font-family: Arial, sans-serif;
@@ -59,21 +64,21 @@
     background-color: #f2f2f2;
   }
   
-=======
 }
 
 table {
-  width: 100%;
+  width: 75%;
   margin-bottom: 1rem;
   background-color: #fff;
   border-collapse: collapse;
   border-spacing: 0;
+  padding: 20px;
 }
 
 thead {
   position: sticky;
   top: 0;
-  background-color: maroon; /* Changed to maroon red */
+  background-color:  #CC212C; /* Changed to #CC212C red */
 }
 
 th,
@@ -86,7 +91,7 @@ td {
 }
 
 th {
-  background-color: maroon; /* Changed to maroon red */
+  background-color:  #CC212C; /* Changed to #CC212C red */
   color: #fff;
   font-weight: bold;
 }
@@ -153,4 +158,3 @@ select {
 .candidate-list.active {
   display: block;
 }
->>>>>>> 37eaf45fc9cb62b6b88b0ff8f24da6c071a13402

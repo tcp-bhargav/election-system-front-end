@@ -1,10 +1,10 @@
-<img src="./Full-DARK-The-Canadian-Press.png" alt="The Canadian Press Logo">
+<img src="./cp-logo-en.png" alt="The Canadian Press Logo">
 <h1>The Canadian Press</h1>
 
 <ng-container *ngIf="isCandidatesRouteActive(); else otherRoutes">
   <!-- Candidates for All Ridings Table -->
   <div class="table-container">
-    <h2>District Candidates</h2>
+    <h2>Candidates</h2>
     <div class="district-table" *ngFor="let districtData of districtResponses">
       <h3>District {{ districtData.district }}</h3>
       <select>
@@ -19,7 +19,7 @@
 <ng-template #otherRoutes>
 <!-- Parties Table -->
   <div class="table-container">
-    <h2>Parties Table</h2>
+    <h2>Parties</h2>
     <app-partiestable></app-partiestable>
   </div>
   <!-- <hr> Add a horizontal line as a partition -->
